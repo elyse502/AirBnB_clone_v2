@@ -27,6 +27,7 @@ Alx-HolbertonBnB is still in active development, with complete functionality set
 * Serving of dynamic content using JavaScript
 
 
+![hbnb_step2](https://github.com/elyse502/AirBnB_clone_v2/assets/125453474/194fe187-0143-499c-ac20-ecc16c578913)
 
 
 
