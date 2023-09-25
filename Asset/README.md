@@ -622,9 +622,9 @@ Update `Place`: (`models/place.py`)
       * Getter attribute `amenities` that returns the list of `Amenity` instances based on the attribute `amenity_ids` that contains all `Amenity.id` linked to the `Place`
       * Setter attribute `amenities` that handles `append` method for adding an `Amenity.id` to the attribute `amenity_ids`. This method should accept only `Amenity` object, otherwise, do nothing.
 
-**What’s a `Many-to-Many` relationship?**
+### What’s a `Many-to-Many` relationship?
 
-In our system, we don’t want to duplicate amenities (for example, having 10000 time the amenity Wifi), so they will be unique. But, at least 2 places can have the same amenity (like Wifi for example). We are in the case of:
+In our system, we don’t want to duplicate amenities (for example, having 10000 time the amenity `Wifi`), so they will be unique. But, at least 2 places can have the same amenity (like `Wifi` for example). We are in the case of:
 * an amenity can be linked to multiple places
 * a place can have multiple amenities
 
