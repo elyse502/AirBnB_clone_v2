@@ -47,7 +47,7 @@ Environment variables will be your best friend for this project!
 * All your functions (inside and outside a class) should have documentation (`python3 -c 'print(__import__("my_module").my_function.__doc__)'` and `python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'`)
 * A documentation is not a simple word, it’s a real sentence explaining what’s the purpose of the module, class or method (the length of it will be verified)
 
-# Python Unit Tests
+## Python Unit Tests
 * All your test files should be inside a folder tests
 * You have to use the [unittest module](https://docs.python.org/3/library/unittest.html#module-unittest)
 * All your test files should be python files (extension: `.py`)
@@ -60,7 +60,7 @@ Environment variables will be your best friend for this project!
 * All your functions (inside and outside a class) should have documentation (`python3 -c 'print(__import__("my_module").my_function.__doc__)'` and `python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'`)
 * We strongly encourage you to work together on test cases, so that you don’t miss any edge cases
 
-# SQL Scripts
+## SQL Scripts
 * Allowed editors: `vi`, `vim`, `emacs`
 * All your files will be executed on Ubuntu 20.04 LTS using `MySQL 8.0`
 * Your files will be executed with `SQLAlchemy` version `1.4.x`
