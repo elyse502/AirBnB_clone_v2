@@ -76,7 +76,7 @@ Environment variables will be your best friend for this project!
 ![hbnb_step2](https://github.com/elyse502/AirBnB_clone_v2/assets/125453474/3644b45b-6a2a-45af-81d0-88f71c1bcc93)
 
 ## Comments for your SQL file:
-```bash
+```groovy
 $ cat my_script.sql
 -- first 3 students in the Batch ID=3
 -- because Batch 3 is the best!
@@ -106,13 +106,13 @@ If you are the owner of this repository, please create a new repository named `A
 Do you remember the `unittest` module?
 
 This codebase contains many test cases. Some are missing, but the ones included cover the basic functionality of the program.
-```bash
+```groovy
 guillaume@ubuntu:~/AirBnB_v2$ python3 -m unittest discover tests 2>&1 /dev/null | tail -n 1
 OK
 guillaume@ubuntu:~/AirBnB_v2$
 ```
 All your unittests **must** pass without any errors at anytime in this project, **with each storage engine!**. Same for PEP8!
-```bash
+```groovy
 guillaume@ubuntu:~/AirBnB_v2$ HBNB_ENV=test HBNB_MYSQL_USER=hbnb_test HBNB_MYSQL_PWD=hbnb_test_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_test_db HBNB_TYPE_STORAGE=db python3 -m unittest discover tests 2>&1 /dev/null | tail -n 1
 OK
 guillaume@ubuntu:~/AirBnB_v2$
@@ -145,7 +145,7 @@ Update the `def do_create(self, arg):` function of your command interpreter (`co
 **Don’t forget to add tests for this new feature!**
 
 Also, this new feature will be tested here only with `FileStorage` engine.
-```bash
+```groovy
 guillaume@ubuntu:~/AirBnB_v2$ cat test_params_create
 create State name="California"
 create State name="Arizona"
@@ -171,7 +171,7 @@ A script that prepares a MySQL server for the project:
 * `hbnb_dev` should have all privileges on the database `hbnb_dev_db` (and **only this database**)
 * `hbnb_dev` should have `SELECT` privilege on the database `performance_schema` (and **only this database**)
 * If the database `hbnb_dev_db` or the user `hbnb_dev` already exists, your script should not fail
-```bash
+```groovy
 guillaume@ubuntu:~/AirBnB_v2$ cat setup_mysql_dev.sql | mysql -hlocalhost -uroot -p
 Enter password: 
 guillaume@ubuntu:~/AirBnB_v2$ echo "SHOW DATABASES;" | mysql -uhbnb_dev -p | grep hbnb_dev_db
@@ -194,7 +194,7 @@ A script that prepares a MySQL server for the project:
 * `hbnb_test` should have all privileges on the database `hbnb_test_db` (and **only this database**)
 * `hbnb_test` should have `SELECT` privilege on the database `performance_schema` (and **only this database**)
 * If the database `hbnb_test_db` or the user `hbnb_test` already exists, your script should not fail
-```
+```groovy
 guillaume@ubuntu:~/AirBnB_v2$ cat setup_mysql_test.sql | mysql -hlocalhost -uroot -p
 Enter password: 
 guillaume@ubuntu:~/AirBnB_v2$ echo "SHOW DATABASES;" | mysql -uhbnb_test -p | grep hbnb_test_db
@@ -213,7 +213,7 @@ guillaume@ubuntu:~/AirBnB_v2$
 Update `FileStorage`: (`models/engine/file_storage.py`)
 * Add a new public instance method: `def delete(self, obj=None):` to delete `obj` from `__objects` if it’s inside - if `obj` is equal to `None`, the method should not do anything
 * Update the prototype of `def all(self)` to `def all(self, cls=None)` - that returns the list of objects of one type of class. Example below with `State` - it’s an optional filtering
-```bash
+```groovy
 guillaume@ubuntu:~/AirBnB_v2$ cat main_delete.py
 #!/usr/bin/python3
 """ Test delete feature
@@ -378,7 +378,7 @@ Update `__init__.py`: (`models/__init__.py`)
 * This “switch” will allow you to change storage type directly by using an environment variable (example below)
 
 State creation:
-```bash
+```groovy
 guillaume@ubuntu:~/AirBnB_v2$ echo 'create State name="California"' | HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py 
 (hbnb) 95a5abab-aa65-4861-9bc6-1da4a36069aa
 (hbnb)
@@ -397,7 +397,7 @@ updated_at: 2017-11-10 00:49:54
 guillaume@ubuntu:~/AirBnB_v2$ 
 ```
 City creation:
-```bash
+```groovy
 guillaume@ubuntu:~/AirBnB_v2$ echo 'create City state_id="95a5abab-aa65-4861-9bc6-1da4a36069aa" name="San_Francisco"' | HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py
 (hbnb) 4b457e66-c7c8-4f63-910f-fd91c3b7140b
 (hbnb)
@@ -407,7 +407,7 @@ guillaume@ubuntu:~/AirBnB_v2$ echo 'all City' | HBNB_MYSQL_USER=hbnb_dev HBNB_MY
 (hbnb)
 guillaume@ubuntu:~/AirBnB_v2$ 
 ```
-```bash
+```groovy
 guillaume@ubuntu:~/AirBnB_v2$ echo 'create City state_id="95a5abab-aa65-4861-9bc6-1da4a36069aa" name="San_Jose"' | HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py
 (hbnb) a7db3cdc-30e0-4d80-ad8c-679fe45343ba
 (hbnb)
@@ -447,7 +447,7 @@ Update `User`: (`models/user.py`)
    * class attribute `last_name`
       * represents a column containing a string (128 characters)
       * can be null
-```bash
+```groovy
 guillaume@ubuntu:~/AirBnB_v2$ echo 'create User email="gui@hbtn.io" password="guipwd" first_name="Guillaume" last_name="Snow"' | HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py 
 (hbnb) 4f3f4b42-a4c3-4c20-a492-efff10d00c0b
 (hbnb) 
@@ -519,7 +519,7 @@ Update `User`: (`models/user.py`)
 Update `City`: (`models/city.py`)
 * Add or replace in the class `City`:
    * class attribute `places` must represent a relationship with the class `Place`. If the `City` object is deleted, all linked `Place` objects must be automatically deleted. Also, the reference from a `Place` object to his `City` should be named `cities`
-```bash
+```groovy
 guillaume@ubuntu:~/AirBnB_v2$ echo 'create Place city_id="4b457e66-c7c8-4f63-910f-fd91c3b7140b" user_id="4f3f4b42-a4c3-4c20-a492-efff10d00c0b" name="Lovely_place" number_rooms=3 number_bathrooms=1 max_guest=6 price_by_night=120 latitude=37.773972 longitude=-122.431297' | HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py 
 (hbnb) ed72aa02-3286-4891-acbc-9d9fc80a1103
 (hbnb) 
@@ -572,7 +572,7 @@ Update `User`: (`models/user.py`)
 Update `Place`: (`models/place.py`)
 * for `DBStorage`: class attribute `reviews` must represent a relationship with the class `Review`. If the `Place` object is deleted, all linked `Review` objects must be automatically deleted. Also, the reference from a `Review` object to his `Place` should be named `place`
 * for `FileStorage`: getter attribute `reviews` that returns the list of `Review` instances with `place_id` equals to the current `Place.id` => It will be the `FileStorage` relationship between `Place` and `Review`
-```bash
+```groovy
 guillaume@ubuntu:~/AirBnB_v2$ 
 guillaume@ubuntu:~/AirBnB_v2$ echo 'create User email="bob@hbtn.io" password="bobpwd" first_name="Bob" last_name="Dylan"' | HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py 
 (hbnb) d93638d9-8233-4124-8f4e-17786592908b
@@ -633,7 +633,7 @@ In our system, we don’t want to duplicate amenities (for example, having 10000
 To make this link working, we will create a third table called `place_amenity` that will create these links.
 
 And you are good, you have a new engine!
-```bash
+```groovy
 guillaume@ubuntu:~/AirBnB_v2$ cat main_place_amenities.py 
 #!/usr/bin/python3
 """ Test link Many-To-Many Place <> Amenity
