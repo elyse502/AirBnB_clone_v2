@@ -8,7 +8,7 @@ from datetime import datetime
 from fabric.api import env, local, put, run, runs_once
 
 
-env.hosts = ["100.25.45.251", "54.227.197.97"] 
+env.hosts = ["100.25.45.251", "54.227.197.97"]
 
 
 @runs_once
@@ -67,4 +67,3 @@ def deploy():
     """
     archive_path = do_pack()
     return do_deploy(archive_path) if archive_path else False
- 
