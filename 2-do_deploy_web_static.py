@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 # Fabfile to distribute an archive to a web server.
-#!/usr/bin/python3
 '''
 fabric script to distribute an archive to web servers
 ----NEEDS TO REVISIT SCRIPT
