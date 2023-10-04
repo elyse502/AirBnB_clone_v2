@@ -4,6 +4,15 @@
 fabric script to distribute an archive to web servers
 ----NEEDS TO REVISIT SCRIPT
 '''
+from fabric.api import *
+from datetime import datetime
+from os import path
+
+
+env.hosts = ["100.25.45.251", "54.227.197.97"]
+env.user = 'ubuntu'
+env.key_filename = '~/.ssh/id_rsa'
+
 
 def do_deploy(archive_path):
     """deploy package to remote server
