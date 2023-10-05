@@ -367,7 +367,7 @@ A Bash script that sets up your web servers for the deployment of `web_static`. 
    * Use `alias` inside your Nginx configuration
    * [Tip](https://stackoverflow.com/questions/10631933/nginx-static-file-serving-confusion-with-root-alias)
 
-Your program should always exit successfully. _Don’t forget to run your script on both of your web servers_.
+Your program should always exit successfully. **_Don’t forget to run your script on both of your web servers_**.
 
 In optional, you will redo this task but by using Puppet
 ```groovy
@@ -402,7 +402,65 @@ ubuntu@89-web-01:~/$ curl localhost/hbnb_static/index.html
 </html>
 ubuntu@89-web-01:~/$ 
 ```
+## 1. Compress before sending: [1-pack_web_static.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/1-pack_web_static.py)
+A Fabric script that generates a [.tgz](https://en.wikipedia.org/wiki/Tar_%28computing%29) archive from the contents of the `web_static` folder of your AirBnB Clone repo, using the function `do_pack`.
+* Prototype: `def do_pack():`
+* All files in the folder `web_static` must be added to the final archive
+* All archives must be stored in the folder `versions` (your function should create this folder if it doesn’t exist)
+* The name of the archive created must be `web_static_<year><month><day><hour><minute><second>.tgz`
+* The function `do_pack` must return the archive path if the archive has been correctly generated. Otherwise, it should return `None`
+```groovy
+guillaume@ubuntu:~/AirBnB_clone_v2$ fab -f 1-pack_web_static.py do_pack 
+Packing web_static to versions/web_static_20170314233357.tgz
+[localhost] local: tar -cvzf versions/web_static_20170314233357.tgz web_static
+web_static/
+web_static/.DS_Store
+web_static/0-index.html
+web_static/1-index.html
+web_static/100-index.html
+web_static/2-index.html
+web_static/3-index.html
+web_static/4-index.html
+web_static/5-index.html
+web_static/6-index.html
+web_static/7-index.html
+web_static/8-index.html
+web_static/images/
+web_static/images/icon.png
+web_static/images/icon_bath.png
+web_static/images/icon_bed.png
+web_static/images/icon_group.png
+web_static/images/icon_pets.png
+web_static/images/icon_tv.png
+web_static/images/icon_wifi.png
+web_static/images/logo.png
+web_static/index.html
+web_static/styles/
+web_static/styles/100-places.css
+web_static/styles/2-common.css
+web_static/styles/2-footer.css
+web_static/styles/2-header.css
+web_static/styles/3-common.css
+web_static/styles/3-footer.css
+web_static/styles/3-header.css
+web_static/styles/4-common.css
+web_static/styles/4-filters.css
+web_static/styles/5-filters.css
+web_static/styles/6-filters.css
+web_static/styles/7-places.css
+web_static/styles/8-places.css
+web_static/styles/common.css
+web_static/styles/filters.css
+web_static/styles/footer.css
+web_static/styles/header.css
+web_static/styles/places.css
+web_static packed: versions/web_static_20170314233357.tgz -> 21283Bytes
 
+Done.
+guillaume@ubuntu:~/AirBnB_clone_v2$ ls -l versions/web_static_20170314233357.tgz
+-rw-rw-r-- 1 guillaume guillaume 21283 Mar 14 23:33 versions/web_static_20170314233357.tgz
+guillaume@ubuntu:~/AirBnB_clone_v2$
+```
 
 
 
