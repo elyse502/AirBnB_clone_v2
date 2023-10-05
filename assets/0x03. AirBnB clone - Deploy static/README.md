@@ -648,64 +648,39 @@ guillaume@ubuntu:~/AirBnB_clone_v2$ ls -ltr versions
 -rw-r--r-- 1 vagrant vagrant 27280335 Mar 15  2017 web_static_20170315015620.tgz
 guillaume@ubuntu:~/AirBnB_clone_v2$
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## 5. Puppet for setup: [101-setup_web_static.pp](https://github.com/elyse502/AirBnB_clone_v2/blob/master/101-setup_web_static.pp)
+Redo the task #0 but by using Puppet:
+```groovy
+ubuntu@89-web-01:~/$ puppet apply 101-setup_web_static.pp
+....
+ubuntu@89-web-01:~/$ ls -l /data
+total 4
+drwxr-xr-x 1 ubuntu ubuntu     4096 Mar  7 05:17 web_static
+ubuntu@89-web-01:~/$ ls -l /data/web_static
+total 8
+lrwxrwxrwx 1 root root   30 Mar 7 22:30 current -> /data/web_static/releases/test
+drwxr-xr-x 3 root root 4096 Mar 7 22:29 releases
+drwxr-xr-x 2 root root 4096 Mar 7 22:29 shared
+ubuntu@89-web-01:~/$ ls /data/web_static/current
+index.html
+ubuntu@89-web-01:~/$ cat /data/web_static/current/index.html
+<html>
+  <head>
+  </head>
+  <body>
+    Holberton School
+  </body>
+</html>
+ubuntu@89-web-01:~/$ curl localhost/hbnb_static/index.html
+<html>
+  <head>
+  </head>
+  <body>
+    Holberton School
+  </body>
+</html>
+ubuntu@89-web-01:~/$ 
+```
 
 
 
