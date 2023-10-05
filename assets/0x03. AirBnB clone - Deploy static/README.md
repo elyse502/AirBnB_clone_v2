@@ -351,7 +351,57 @@ $ pip3 install PyNaCl==1.3.0
 $ pip3 install Fabric3==1.14.post1
 ```
 
+# Tasks 📃
+## 0. Prepare your web servers: [0-setup_web_static.sh](https://github.com/elyse502/AirBnB_clone_v2/blob/master/0-setup_web_static.sh)
+A Bash script that sets up your web servers for the deployment of `web_static`. It must:
+* Install Nginx if it not already installed
+* Create the folder `/data/` if it doesn’t already exist
+* Create the folder `/data/web_static/` if it doesn’t already exist
+* Create the folder `/data/web_static/releases/` if it doesn’t already exist
+* Create the folder `/data/web_static/shared/` if it doesn’t already exist
+* Create the folder `/data/web_static/releases/test/` if it doesn’t already exist
+* Create a fake HTML file `/data/web_static/releases/test/index.html` (with simple content, to test your Nginx configuration)
+* Create a symbolic link `/data/web_static/current` linked to the `/data/web_static/releases/test/` folder. If the symbolic link already exists, it should be deleted and recreated every time the script is ran.
+* Give ownership of the `/data/` folder to the `ubuntu` user AND group (you can assume this user and group exist). This should be recursive; everything inside should be created/owned by this user/group.
+* Update the Nginx configuration to serve the content of `/data/web_static/current/` to `hbnb_static` (ex: `https://mydomainname.tech/hbnb_static`). Don’t forget to restart Nginx after updating the configuration:
+   * Use `alias` inside your Nginx configuration
+   * [Tip](https://stackoverflow.com/questions/10631933/nginx-static-file-serving-confusion-with-root-alias)
 
+Your program should always exit successfully. _Don’t forget to run your script on both of your web servers_.
+
+In optional, you will redo this task but by using Puppet
+```groovy
+ubuntu@89-web-01:~/$ sudo ./0-setup_web_static.sh
+ubuntu@89-web-01:~/$ echo $?
+0
+ubuntu@89-web-01:~/$ ls -l /data
+total 4
+drwxr-xr-x 1 ubuntu ubuntu     4096 Mar  7 05:17 web_static
+ubuntu@89-web-01:~/$ ls -l /data/web_static
+total 8
+lrwxrwxrwx 1 ubuntu ubuntu   30 Mar 7 22:30 current -> /data/web_static/releases/test
+drwxr-xr-x 3 ubuntu ubuntu 4096 Mar 7 22:29 releases
+drwxr-xr-x 2 ubuntu ubuntu 4096 Mar 7 22:29 shared
+ubuntu@89-web-01:~/$ ls /data/web_static/current
+index.html
+ubuntu@89-web-01:~/$ cat /data/web_static/current/index.html
+<html>
+  <head>
+  </head>
+  <body>
+    Holberton School
+  </body>
+</html>
+ubuntu@89-web-01:~/$ curl localhost/hbnb_static/index.html
+<html>
+  <head>
+  </head>
+  <body>
+    Holberton School
+  </body>
+</html>
+ubuntu@89-web-01:~/$ 
+```
 
 
 
