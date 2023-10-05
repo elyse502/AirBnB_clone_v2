@@ -461,8 +461,68 @@ guillaume@ubuntu:~/AirBnB_clone_v2$ ls -l versions/web_static_20170314233357.tgz
 -rw-rw-r-- 1 guillaume guillaume 21283 Mar 14 23:33 versions/web_static_20170314233357.tgz
 guillaume@ubuntu:~/AirBnB_clone_v2$
 ```
+## 2. Deploy archive!: [2-do_deploy_web_static.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/2-do_deploy_web_static.py)
+A Fabric script (based on the file `1-pack_web_static.py`) that distributes an archive to your web servers, using the function `do_deploy`:
+* Prototype: def `do_deploy(archive_path):`
+* Returns `False` if the file at the path `archive_path` doesn’t exist
+* The script should take the following steps:
+   * Upload the archive to the `/tmp/` directory of the web server
+   * Uncompress the archive to the folder `/data/web_static/releases/<archive filename without extension>` on the web server
+   * Delete the archive from the web server
+   * Delete the symbolic link `/data/web_static/current` from the web server
+   * Create a new the symbolic link `/data/web_static/current` on the web server, linked to the new version of your code (`/data/web_static/releases/<archive filename without extension>`)
+* All remote commands must be executed on your both web servers (using `env.hosts = ['<IP web-01>', 'IP web-02']` variable in your script)
+* Returns `True` if all operations have been done correctly, otherwise returns `False`
+* You must use this script to deploy it on your servers: `xx-web-01` and `xx-web-02`
 
+In the following example, the SSH key and the username used for accessing to the server are passed in the command line. Of course, you could define them as Fabric environment variables (ex: `env.user =...`)
 
+**Disclaimer**: commands execute by Fabric displayed below are linked to the way we implemented the archive function `do_pack` - like the `mv` command - depending of your implementation of it, you may don’t need it
+```groovy
+guillaume@ubuntu:~/AirBnB_clone_v2$ fab -f 2-do_deploy_web_static.py do_deploy:archive_path=versions/web_static_20170315003959.tgz -i my_ssh_private_key -u ubuntu
+[52.55.249.213] Executing task 'do_deploy'
+[52.55.249.213] put: versions/web_static_20170315003959.tgz -> /tmp/web_static_20170315003959.tgz
+[52.55.249.213] run: mkdir -p /data/web_static/releases/web_static_20170315003959/
+[52.55.249.213] run: tar -xzf /tmp/web_static_20170315003959.tgz -C /data/web_static/releases/web_static_20170315003959/
+[52.55.249.213] run: rm /tmp/web_static_20170315003959.tgz
+[52.55.249.213] run: mv /data/web_static/releases/web_static_20170315003959/web_static/* /data/web_static/releases/web_static_20170315003959/
+[52.55.249.213] run: rm -rf /data/web_static/releases/web_static_20170315003959/web_static
+[52.55.249.213] run: rm -rf /data/web_static/current
+[52.55.249.213] run: ln -s /data/web_static/releases/web_static_20170315003959/ /data/web_static/current
+New version deployed!
+[54.157.32.137] Executing task 'deploy'
+[54.157.32.137] put: versions/web_static_20170315003959.tgz -> /tmp/web_static_20170315003959.tgz
+[54.157.32.137] run: mkdir -p /data/web_static/releases/web_static_20170315003959/
+[54.157.32.137] run: tar -xzf /tmp/web_static_20170315003959.tgz -C /data/web_static/releases/web_static_20170315003959/
+[54.157.32.137] run: rm /tmp/web_static_20170315003959.tgz
+[54.157.32.137] run: mv /data/web_static/releases/web_static_20170315003959/web_static/* /data/web_static/releases/web_static_20170315003959/
+[54.157.32.137] run: rm -rf /data/web_static/releases/web_static_20170315003959/web_static
+[54.157.32.137] run: rm -rf /data/web_static/current
+[54.157.32.137] run: ln -s /data/web_static/releases/web_static_20170315003959/ /data/web_static/current
+New version deployed!
+
+Done.
+Disconnecting from 54.157.32.137... done.
+Disconnecting from 52.55.249.213... done.
+guillaume@ubuntu:~/AirBnB_clone_v2$ 
+guillaume@ubuntu:~/AirBnB_clone_v2$ curl 54.157.32.137/hbnb_static/0-index.html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>AirBnB clone</title>
+    </head>
+    <body style="margin: 0px; padding: 0px;">
+        <header style="height: 70px; width: 100%; background-color: #FF0000">
+        </header>
+
+        <footer style="position: absolute; left: 0; bottom: 0; height: 60px; width: 100%; background-color: #00FF00; text-align: center; overflow: hidden;">
+            <p style="line-height: 60px; margin: 0px;">Holberton School</p>
+        </footer>
+    </body>
+</html>
+guillaume@ubuntu:~/AirBnB_clone_v2$
+```
 
 
 
