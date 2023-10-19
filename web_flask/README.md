@@ -1039,11 +1039,8 @@ guillaume@ubuntu:~/AirBnB_v2$ HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_p
 ```
 
 ![4f993ec8ca2a2f639a80887667106ac63a0a3701](https://github.com/elyse502/AirBnB_clone_v2/assets/125453474/1fb807de-32a5-44a5-8d50-7b34bf7df6bf)
-
 ![1549b553d726cc37f64440be910cb6b858aa32ae](https://github.com/elyse502/AirBnB_clone_v2/assets/125453474/4a0bc6d0-204c-4aba-8bfa-81f55864666c)
-
 ![94b3a416ba1551c59701eb6672ac0a36fbebba14](https://github.com/elyse502/AirBnB_clone_v2/assets/125453474/22b93c18-24b5-4263-8817-83bbee2e12d8)
-
 ![1e559707dd34a37564dc10e54b707815a516d363](https://github.com/elyse502/AirBnB_clone_v2/assets/125453474/ae47bcbf-ff74-4311-acc3-377e5a98a4df)
 
 
