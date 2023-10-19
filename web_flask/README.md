@@ -403,8 +403,38 @@ Python is cool$
 guillaume@ubuntu:~$ 
 ```
 
-
-
+## 4. Is it a number?: [4-number_route.py](4-number_route.py)
+A script that starts a Flask web application:
+* Your web application must be listening on `0.0.0.0`, port `5000`
+* Routes:
+   * `/`: display “Hello HBNB!”
+   * `/hbnb`: display “HBNB”
+   * `/c/<text>`: display “C ”, followed by the value of the `text` variable (replace underscore `_` symbols with a space ` `)
+   * `/python/(<text>)`: display “Python ”, followed by the value of the `text` variable (replace underscore `_` symbols with a space ` `)
+      * The default value of text is “is cool”
+   * `/number/<n>`: display “`n` is a number” only if `n` is an integer
+* You must use the option `strict_slashes=False` in your route definition
+```groovy
+guillaume@ubuntu:~/AirBnB_v2$ python3 -m web_flask.4-number_route
+* Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+....
+```
+In another tab:
+```groovy
+guillaume@ubuntu:~$ curl 0.0.0.0:5000/number/89 ; echo "" | cat -e
+89 is a number$
+guillaume@ubuntu:~$ curl 0.0.0.0:5000/number/8.9 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+guillaume@ubuntu:~$ curl 0.0.0.0:5000/number/python 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+guillaume@ubuntu:~$ 
+```
 
 
 
