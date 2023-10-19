@@ -693,6 +693,199 @@ guillaume@ubuntu:~$ curl 0.0.0.0:5000/states_list ; echo ""
 guillaume@ubuntu:~$ 
 ```
 
+## 9. Cities by states: [8-cities_by_states.py](8-cities_by_states.py), [templates/8-cities_by_states.html](templates/8-cities_by_states.html)
+A script that starts a Flask web application:
+* Your web application must be listening on `0.0.0.0`, port `5000`
+* You must use storage for fetching data from the storage engine (`FileStorage` or `DBStorage`) => `from models import storage` and `storage.all(...)`
+* To load all cities of a `State`:
+   * If your storage engine is `DBStorage`, you must use `cities` relationship
+   * Otherwise, use the public getter method `cities`
+* After each request you must remove the current SQLAlchemy Session:
+   * Declare a method to handle `@app.teardown_appcontext`
+   * Call in this method `storage.close()`
+* Routes:
+   * `/cities_by_states`: display a HTML page: (inside the tag `BODY`)
+      * `H1` tag: “States”
+      * `UL` tag: with the list of all `State` objects present in `DBStorage` **sorted** by `name` (A->Z) [tip](https://jinja.palletsprojects.com/en/2.9.x/templates/)
+         * `LI` tag: description of one `State`: `<state.id>: <B><state.name></B>` + `UL` tag: with the list of `City` objects linked to the `State` **sorted** by `name` (A->Z)
+            * `LI` tag: description of one `City`: `<city.id>: <B><city.name></B>`
+* Import this [7-dump](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/290/7-states_list.sql) to have some data
+* You must use the option strict_slashes=False in your route definition
+
+#### IMPORTANT
+* Make sure you have a running and valid `setup_mysql_dev.sql` in your `AirBnB_clone_v2` repository ([Task](https://github.com/elyse502/AirBnB_clone_v2/blob/master/setup_mysql_dev.sql))
+* Make sure all tables are created when you run `echo "quit" | HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py`
+```groovy
+guillaume@ubuntu:~/AirBnB_v2$ curl -o 7-dump.sql "https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/290/7-states_list.sql"
+guillaume@ubuntu:~/AirBnB_v2$ cat 7-dump.sql | mysql -uroot -p
+Enter password: 
+guillaume@ubuntu:~/AirBnB_v2$ HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db python3 -m web_flask.8-cities_by_states
+* Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+....
+```
+In another tab:
+```groovy
+guillaume@ubuntu:~$ curl 0.0.0.0:5000/cities_by_states ; echo ""
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+        <H1>States</H1>
+        <UL>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479545: <B>Alabama</B>
+                <UL>
+
+                        <LI>521a55f4-7d82-47d9-b54c-a76916479545: <B>Akron</B></LI>
+
+                        <LI>531a55f4-7d82-47d9-b54c-a76916479545: <B>Babbie</B></LI>
+
+                        <LI>541a55f4-7d82-47d9-b54c-a76916479545: <B>Calera</B></LI>
+
+                        <LI>551a55f4-7d82-47d9-b54c-a76916479545: <B>Fairfield</B></LI>
+
+                </UL>
+            </LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479546: <B>Arizona</B>
+                <UL>
+
+                        <LI>521a55f4-7d82-47d9-b54c-a76916479546: <B>Douglas</B></LI>
+
+                        <LI>531a55f4-7d82-47d9-b54c-a76916479546: <B>Kearny</B></LI>
+
+                        <LI>541a55f4-7d82-47d9-b54c-a76916479546: <B>Tempe</B></LI>
+
+                </UL>
+            </LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479547: <B>California</B>
+                <UL>
+
+                        <LI>541a55f4-7d82-47d9-b54c-a76916479547: <B>Fremont</B></LI>
+
+                        <LI>551a55f4-7d82-47d9-b54c-a76916479547: <B>Napa</B></LI>
+
+                        <LI>521a55f4-7d82-47d9-b54c-a76916479547: <B>San Francisco</B></LI>
+
+                        <LI>531a55f4-7d82-47d9-b54c-a76916479547: <B>San Jose</B></LI>
+
+                        <LI>561a55f4-7d82-47d9-b54c-a76916479547: <B>Sonoma</B></LI>
+
+                </UL>
+            </LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479548: <B>Colorado</B>
+                <UL>
+
+                        <LI>521a55f4-7d82-47d9-b54c-a76916479548: <B>Denver</B></LI>
+
+                </UL>
+            </LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479549: <B>Florida</B>
+                <UL>
+
+                        <LI>521a55f4-7d82-47d9-b54c-a76916479549: <B>Miami</B></LI>
+
+                        <LI>531a55f4-7d82-47d9-b54c-a76916479549: <B>Orlando</B></LI>
+
+                </UL>
+            </LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479550: <B>Georgia</B>
+                <UL>
+
+                </UL>
+            </LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479551: <B>Hawaii</B>
+                <UL>
+
+                        <LI>521a55f4-7d82-47d9-b54c-a76916479551: <B>Honolulu</B></LI>
+
+                        <LI>531a55f4-7d82-47d9-b54c-a76916479551: <B>Kailua</B></LI>
+
+                        <LI>541a55f4-7d82-47d9-b54c-a76916479551: <B>Pearl city</B></LI>
+
+                </UL>
+            </LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479552: <B>Illinois</B>
+                <UL>
+
+                        <LI>521a55f4-7d82-47d9-b54c-a76916479552: <B>Chicago</B></LI>
+
+                        <LI>561a55f4-7d82-47d9-b54c-a76916479552: <B>Joliet</B></LI>
+
+                        <LI>541a55f4-7d82-47d9-b54c-a76916479552: <B>Naperville</B></LI>
+
+                        <LI>531a55f4-7d82-47d9-b54c-a76916479552: <B>Peoria</B></LI>
+
+                        <LI>551a55f4-7d82-47d9-b54c-a76916479552: <B>Urbana</B></LI>
+
+                </UL>
+            </LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479553: <B>Indiana</B>
+                <UL>
+
+                </UL>
+            </LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479554: <B>Louisiana</B>
+                <UL>
+
+                        <LI>531a55f4-7d82-47d9-b54c-a76916479554: <B>Baton rouge</B></LI>
+
+                        <LI>541a55f4-7d82-47d9-b54c-a76916479554: <B>Lafayette</B></LI>
+
+                        <LI>521a55f4-7d82-47d9-b54c-a76916479554: <B>New Orleans</B></LI>
+
+                </UL>
+            </LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479555: <B>Minnesota</B>
+                <UL>
+
+                        <LI>521a55f4-7d82-47d9-b54c-a76916479555: <B>Saint Paul</B></LI>
+
+                </UL>
+            </LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479556: <B>Mississippi</B>
+                <UL>
+
+                        <LI>521a55f4-7d82-47d9-b54c-a76916479556: <B>Jackson</B></LI>
+
+                        <LI>541a55f4-7d82-47d9-b54c-a76916479556: <B>Meridian</B></LI>
+
+                        <LI>531a55f4-7d82-47d9-b54c-a76916479556: <B>Tupelo</B></LI>
+
+                </UL>
+            </LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479557: <B>Oregon</B>
+                <UL>
+
+                        <LI>531a55f4-7d82-47d9-b54c-a76916479557: <B>Eugene</B></LI>
+
+                        <LI>521a55f4-7d82-47d9-b54c-a76916479557: <B>Portland</B></LI>
+
+                </UL>
+            </LI>
+
+        </UL>
+    </BODY>
+</HTML>
+guillaume@ubuntu:~$ 
+```
+
+![9a7ae8155274b17881442200437e8793cf08de48](https://github.com/elyse502/AirBnB_clone_v2/assets/125453474/f141c881-8efe-4b6f-965d-e0fc27f79ce1)
+
+
 
 
 
