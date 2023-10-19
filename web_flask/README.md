@@ -533,7 +533,7 @@ guillaume@ubuntu:~$
 Before using Flask to display our HBNB data, you will need to update some part of our engine:
 
 Update `FileStorage`: (`models/engine/file_storage.py`)
-* Add a public method `def close(self)`:: call `reload()` method for deserializing the JSON file to objects
+* Add a public method `def close(self):`: call `reload()` method for deserializing the JSON file to objects
 
 Update `DBStorage`: (`models/engine/db_storage.py`)
 * Add a public method `def close(self):`: call `remove()` method on the private session attribute (`self.__session`) [tips](https://docs.sqlalchemy.org/en/13/orm/contextual.html) or `close()` on the class `Session` [tips](https://docs.sqlalchemy.org/en/13/orm/session_api.html)
@@ -623,8 +623,75 @@ Find the city [City] (a693bdb9-e0ca-4521-adfd-e1a93c093b4b) {'name': 'Page', 'id
 guillaume@ubuntu:~/AirBnB_v2$ 
 ```
 
+## 8. List of states: [7-states_list.py](7-states_list.py), [templates/7-states_list.html](templates/7-states_list.html)
+A script that starts a Flask web application:
+* Your web application must be listening on `0.0.0.0`, port `5000`
+* You must use `storage` for fetching data from the storage engine (`FileStorage` or `DBStorage`) => `from models import storage` and `storage.all(...)`
+* After each request you must remove the current SQLAlchemy Session:
+   * Declare a method to handle `@app.teardown_appcontext`
+   * Call in this method `storage.close()`
+* Routes:
+   * `/states_list: display` a HTML page: (inside the tag `BODY`)
+      * `H1` tag: “States”
+      * `UL` tag: with the list of all `State` objects present in `DBStorage` sorted by `name` (A->Z) [tip](https://jinja.palletsprojects.com/en/2.9.x/templates/)
+         * `LI` tag: description of one `State`: `<state.id>: <B><state.name></B>`
+* Import this [7-dump](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/290/7-states_list.sql) to have some data
+* You must use the option `strict_slashes=False` in your route definition
 
+#### IMPORTANT
+* Make sure you have a running and valid `setup_mysql_dev.sql` in your `AirBnB_clone_v2` repository ([Task](https://github.com/elyse502/AirBnB_clone_v2/blob/master/setup_mysql_dev.sql))
+* Make sure all tables are created when you run `echo "quit" | HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py`
+```groovy
+guillaume@ubuntu:~/AirBnB_v2$ curl -o 7-dump.sql "https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/290/7-states_list.sql"
+guillaume@ubuntu:~/AirBnB_v2$ cat 7-dump.sql | mysql -uroot -p
+Enter password: 
+guillaume@ubuntu:~/AirBnB_v2$ HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db python3 -m web_flask.7-states_list
+* Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+....
+```
+In another tab:
+```groovy
+guillaume@ubuntu:~$ curl 0.0.0.0:5000/states_list ; echo ""
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+        <H1>States</H1>
+        <UL>
 
+            <LI>421a55f4-7d82-47d9-b54c-a76916479545: <B>Alabama</B></LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479546: <B>Arizona</B></LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479547: <B>California</B></LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479548: <B>Colorado</B></LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479549: <B>Florida</B></LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479550: <B>Georgia</B></LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479551: <B>Hawaii</B></LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479552: <B>Illinois</B></LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479553: <B>Indiana</B></LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479554: <B>Louisiana</B></LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479555: <B>Minnesota</B></LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479556: <B>Mississippi</B></LI>
+
+            <LI>421a55f4-7d82-47d9-b54c-a76916479557: <B>Oregon</B></LI>
+
+        </UL>
+    </BODY>
+</HTML>
+guillaume@ubuntu:~$ 
+```
 
 
 
