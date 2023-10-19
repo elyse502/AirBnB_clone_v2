@@ -696,7 +696,7 @@ guillaume@ubuntu:~$
 ## 9. Cities by states: [8-cities_by_states.py](8-cities_by_states.py), [templates/8-cities_by_states.html](templates/8-cities_by_states.html)
 A script that starts a Flask web application:
 * Your web application must be listening on `0.0.0.0`, port `5000`
-* You must use storage for fetching data from the storage engine (`FileStorage` or `DBStorage`) => `from models import storage` and `storage.all(...)`
+* You must use `storage` for fetching data from the storage engine (`FileStorage` or `DBStorage`) => `from models import storage` and `storage.all(...)`
 * To load all cities of a `State`:
    * If your storage engine is `DBStorage`, you must use `cities` relationship
    * Otherwise, use the public getter method `cities`
@@ -710,7 +710,7 @@ A script that starts a Flask web application:
          * `LI` tag: description of one `State`: `<state.id>: <B><state.name></B>` + `UL` tag: with the list of `City` objects linked to the `State` **sorted** by `name` (A->Z)
             * `LI` tag: description of one `City`: `<city.id>: <B><city.name></B>`
 * Import this [7-dump](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/290/7-states_list.sql) to have some data
-* You must use the option strict_slashes=False in your route definition
+* You must use the option `strict_slashes=False` in your route definition
 
 #### IMPORTANT
 * Make sure you have a running and valid `setup_mysql_dev.sql` in your `AirBnB_clone_v2` repository ([Task](https://github.com/elyse502/AirBnB_clone_v2/blob/master/setup_mysql_dev.sql))
