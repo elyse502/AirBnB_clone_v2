@@ -265,7 +265,7 @@ print(date_now.strftime("%A %d %B %Y at %H:%M:%S")) # Thursday 08 June 2017 at 2
 **Recommended YouTube playlist to get you started**
 * [YOU-TUBE VIDEO](https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH)
 
-# General
+# General🧵
 * What is a Web Framework
 * How to build a web framework with Flask
 * How to define routes in Flask
@@ -312,10 +312,43 @@ $ pip3 install Flask
 ![hbnb_step3](https://github.com/elyse502/AirBnB_clone_v2/assets/125453474/3f5ec961-a6e6-400c-b22e-16c7ca4dc559)
 
 
+# Tasks 📃
+## 0. Hello Flask!: [0-hello_route.py](0-hello_route.py), [__init__.py](__init__.py)
+A script that starts a Flask web application:
+* Your web application must be listening on `0.0.0.0`, port `5000`
+* Routes:
+   * `/`: display “Hello HBNB!”
+* You must use the option `strict_slashes=False` in your route definition
+```groovy
+guillaume@ubuntu:~/AirBnB_v2$ python3 -m web_flask.0-hello_route
+* Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+....
+```
+In another tab:
+```groovy
+guillaume@ubuntu:~$ curl 0.0.0.0:5000 ; echo "" | cat -e
+Hello HBNB!$
+guillaume@ubuntu:~$
+```
 
-
-
-
+## 1. HBNB: [1-hbnb_route.py](1-hbnb_route.py)
+A script that starts a Flask web application:
+* Your web application must be listening on 0.0.0.0, port 5000
+* Routes:
+   * `/`: display “Hello HBNB!”
+   * `/hbnb`: display “HBNB”
+* You must use the option `strict_slashes=False` in your route definition
+```groovy
+guillaume@ubuntu:~/AirBnB_v2$ python3 -m web_flask.1-hbnb_route
+* Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+....
+```
+In another tab:
+```groovy
+guillaume@ubuntu:~$ curl 0.0.0.0:5000/hbnb ; echo "" | cat -e
+HBNB$
+guillaume@ubuntu:~$ 
+```
 
 
 
