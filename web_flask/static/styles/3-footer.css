@@ -4,13 +4,18 @@
 
 /* Footer style */
 footer {
-  align-items: center;
-  background-color: #fff;
-  border-top: 1px solid #ccc;
-  bottom: 0;
-  display: flex;
-  height: 60px;
-  justify-content: center;
-  position: absolute;
-  width: 100%;
+    position: fixed;
+    background: white;
+    height: 60px;
+    width: 100%;
+    bottom: 0;
+    border-top: 1px solid #CCCCCC;
+}
+footer p {
+    position: absolute;
+    text-align: center;
+    top: 10%;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
