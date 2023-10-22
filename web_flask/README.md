@@ -333,6 +333,18 @@ $ pip3 install Flask
 
 ![hbnb_step3](https://github.com/elyse502/AirBnB_clone_v2/assets/125453474/3f5ec961-a6e6-400c-b22e-16c7ca4dc559)
 
+# N.B:
+```groovy
+After thinking for sometime😅
+
+I just populated my sql with 100-dump, since it has all the data for all the tables including place-amenity(which was causing incompatibility)
+
+curl -o 100-dump.sql "https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/290/100-hbnb.sql"
+
+cat 100-dump.sql | mysql -uroot -p
+
+this solved the error because now I was working with every table  ,from task 7 to  now I am in task 9
+```
 
 # Tasks 📃
 ## 0. Hello Flask!: [0-hello_route.py](0-hello_route.py), [__init__.py](__init__.py)
