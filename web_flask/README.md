@@ -353,6 +353,8 @@ You don't have to push the `env` Repo all you have to do is:
 ~ Then later after create a gitIgnore file like this:
    - vi 'gitignore', Then put in 'env' Repo
 ~ After that you can now go ahead and push everything to your GitHub....
+~ Then someone who will need to use Your Repo will just install everything to his/her own PC like this:
+   - pip install -r rquirements.txt
 ```
 
 # N.B:
