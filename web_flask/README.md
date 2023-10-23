@@ -330,6 +330,17 @@ print(date_now.strftime("%A %d %B %Y at %H:%M:%S")) # Thursday 08 June 2017 at 2
 ```groovy
 $ pip3 install Flask
 ```
+# [virtualenv](https://virtualenv.pypa.io/en/latest/)
+`virtualenv` is a tool to create isolated Python environments. Since Python `3.3`, a subset of it has been integrated into the standard library under the [venv module](https://docs.python.org/3/library/venv.html).
+* virtualenv is **used to manage Python packages for different projects**. Using virtualenv allows you to avoid installing Python packages globally which could break system tools or other projects. You can install virtualenv using `pip. python3 -m pip install --user virtualenv`.
+
+```groovy
+How to use it. Inside your TERMINAL:
+~ virtualenv env
+~ source env/bin/activate
+
+~ type 'deactivate' to exit.
+```
 
 ![hbnb_step3](https://github.com/elyse502/AirBnB_clone_v2/assets/125453474/3f5ec961-a6e6-400c-b22e-16c7ca4dc559)
 
