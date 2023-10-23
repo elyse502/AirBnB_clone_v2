@@ -344,6 +344,16 @@ How to use it. Inside your TERMINAL:
 
 ~ type 'deactivate' to exit.
 ```
+* Pushing to `GitHub`:
+You don't have to push the `env` Repo all you have to do is;
+```groovy
+~ Type command, 'pip freeze' and everything that were installed will show up.
+~ And you just have to create a file to push to GitHub that contains everything installed like this:
+   - pip freeze > requirements.txt
+~ Then later after create a gitIgnore file like this:
+   - vi gitignore, Then put in 'env' Repo
+~ After that you can now go ahead and push everything to your GitHub....
+```
 
 # N.B:
 ```groovy
