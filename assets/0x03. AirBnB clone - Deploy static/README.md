@@ -4,7 +4,11 @@ _For this project, we expect you to look at these concepts:_
 * [CI/CD](https://intranet.alxswe.com/concepts/43)
 * [AirBnB clone](https://intranet.alxswe.com/concepts/74)
 
-## 1. CI/CD
+<br />
+<details>
+    <summary>Click to show/hide Content</summary><br />
+
+# 1. CI/CD
 The lean/agile methodology (See: [Twelve Principles of Agile Software](http://agilemanifesto.org/principles.html)) is now widely used by the industry and one of its key principles is to iterate as fast as possible. If you apply this to software engineering, it means that you should:
 * code
 * ship your code
@@ -32,7 +36,9 @@ This translates to a “shipping pipeline” which is often built with multiple 
 * Measuring the code
     * Datadog, Newrelic, Wavefront
 
-## 2. AirBnB clone
+<br /><hr /><br />
+
+# 2. AirBnB clone
 
 ![65f4a1dd9c51265f49d0](https://github.com/elyse502/AirBnB_clone/assets/125453474/acf08a8b-f4e4-47b6-b32e-25d73c434b32)
 
@@ -277,6 +283,8 @@ print(date_now.strftime("%A %d %B %Y at %H:%M:%S")) # Thursday 08 June 2017 at 2
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br><br>
 
+</details>
+
 # Background Context
 Ever since you completed project [0x0F. Load balancer](https://github.com/elyse502/alx-system_engineering-devops/tree/master/0x0F-load_balancer) of the SysAdmin track, you’ve had 2 web servers + 1 load balancer but nothing to distribute with them.
 
@@ -351,6 +359,8 @@ $ pip3 install PyNaCl==1.3.0
 $ pip3 install Fabric3==1.14.post1
 ```
 
+<br /><hr /><br />
+
 # Tasks 📃
 ## 0. Prepare your web servers: [0-setup_web_static.sh](https://github.com/elyse502/AirBnB_clone_v2/blob/master/0-setup_web_static.sh)
 A Bash script that sets up your web servers for the deployment of `web_static`. It must:
@@ -402,6 +412,9 @@ ubuntu@89-web-01:~/$ curl localhost/hbnb_static/index.html
 </html>
 ubuntu@89-web-01:~/$ 
 ```
+
+---
+
 ## 1. Compress before sending: [1-pack_web_static.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/1-pack_web_static.py)
 A Fabric script that generates a [.tgz](https://en.wikipedia.org/wiki/Tar_%28computing%29) archive from the contents of the `web_static` folder of your AirBnB Clone repo, using the function `do_pack`.
 * Prototype: `def do_pack():`
@@ -461,6 +474,9 @@ guillaume@ubuntu:~/AirBnB_clone_v2$ ls -l versions/web_static_20170314233357.tgz
 -rw-rw-r-- 1 guillaume guillaume 21283 Mar 14 23:33 versions/web_static_20170314233357.tgz
 guillaume@ubuntu:~/AirBnB_clone_v2$
 ```
+
+---
+
 ## 2. Deploy archive!: [2-do_deploy_web_static.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/2-do_deploy_web_static.py)
 A Fabric script (based on the file `1-pack_web_static.py`) that distributes an archive to your web servers, using the function `do_deploy`:
 * Prototype: def `do_deploy(archive_path):`
@@ -523,6 +539,9 @@ guillaume@ubuntu:~/AirBnB_clone_v2$ curl 54.157.32.137/hbnb_static/0-index.html
 </html>
 guillaume@ubuntu:~/AirBnB_clone_v2$
 ```
+
+---
+
 ## 3. Full deployment: [3-deploy_web_static.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/3-deploy_web_static.py)
 A Fabric script (based on the file `2-do_deploy_web_static.py`) that creates and distributes an archive to your web servers, using the function `deploy`:
 * Prototype: `def deploy()`:
@@ -623,6 +642,9 @@ guillaume@ubuntu:~/AirBnB_clone_v2$ curl 54.157.32.137/hbnb_static/0-index.html
 </html>
 guillaume@ubuntu:~/AirBnB_clone_v2$ 
 ```
+
+---
+
 ## 4. Keep it clean!: [100-clean_web_static.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/100-clean_web_static.py)
 A Fabric script (based on the file `3-deploy_web_static.py`) that deletes out-of-date archives, using the function `do_clean`:
 * Prototype: `def do_clean(number=0):`
@@ -648,6 +670,9 @@ guillaume@ubuntu:~/AirBnB_clone_v2$ ls -ltr versions
 -rw-r--r-- 1 vagrant vagrant 27280335 Mar 15  2017 web_static_20170315015620.tgz
 guillaume@ubuntu:~/AirBnB_clone_v2$
 ```
+
+---
+
 ## 5. Puppet for setup: [101-setup_web_static.pp](https://github.com/elyse502/AirBnB_clone_v2/blob/master/101-setup_web_static.pp)
 Redo the task #0 but by using Puppet:
 ```groovy
