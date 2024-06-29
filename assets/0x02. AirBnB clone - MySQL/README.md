@@ -1,6 +1,6 @@
 # 0x02. AirBnB clone - MySQL
 ## Description :house:
-Alx-HolbertonBnB is a complete RESTful web application, integrating file and database (MySQL) storage in a back-end API with front-end interfacing in a clone of AirBnB. The front-end is designed using HTML5/CSS3 and is served using Python Flask. The application is configured on a distributed system - two web servers and one load balancer - with Nginx and HAProxy.
+**Alx-HolbertonBnB** is a complete RESTful web application, integrating file and database (MySQL) storage in a back-end API with front-end interfacing in a clone of AirBnB. The front-end is designed using HTML5/CSS3 and is served using Python Flask. The application is configured on a distributed system - two web servers and one load balancer - with Nginx and HAProxy.
 
 Alx-HolbertonBnB is still in active development, with complete functionality set to deploy in the coming month:
 * Complete integration of a RESTful API
@@ -93,6 +93,9 @@ $ cat my_script.sql
 SELECT id, name FROM students WHERE batch_id = 3 ORDER BY created_at DESC LIMIT 3;
 $
 ```
+
+<br /><hr /><br />
+
 # Tasks 📃
 ## 0. Fork me if you can!: [AirBnB_clone_v2](https://github.com/elyse502/AirBnB_clone_v2)
 In the industry, you will work on an existing codebase 90% of the time. Your first thoughts upon looking at it might include:
@@ -111,6 +114,8 @@ For this project you will fork this [codebase](https://github.com/justinmajetich
 * update the `README.md` with your information but don’t delete the initial authors
 
 If you are the owner of this repository, please create a new repository named `AirBnB_clone_v2` with the same content of `AirBnB_clone`
+
+---
 
 ## 1. Bug free!: [AirBnB_clone_v2](https://github.com/elyse502/AirBnB_clone_v2)
 Do you remember the `unittest` module?
@@ -139,6 +144,8 @@ For example, “you want to validate that the `create State name="California"` c
 * execute the console command
 * get (again) the number of current records in the table `states` (same method, with `MySQLdb`)
 * if the difference is `+1` => test passed
+
+---
 
 ## 2. Console improvements: [console.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/console.py), [models/](https://github.com/elyse502/AirBnB_clone_v2/tree/master/models), [tests/](https://github.com/elyse502/AirBnB_clone_v2/tree/master/tests)
 Update the `def do_create(self, arg):` function of your command interpreter (`console.py`) to allow for object creation with given parameters:
@@ -173,6 +180,8 @@ guillaume@ubuntu:~/AirBnB_v2$ cat test_params_create | ./console.py
 guillaume@ubuntu:~/AirBnB_v2$
 ```
 
+---
+
 ## 3. MySQL setup development: [setup_mysql_dev.sql](https://github.com/elyse502/AirBnB_clone_v2/blob/master/setup_mysql_dev.sql)
 A script that prepares a MySQL server for the project:
 * A database `hbnb_dev_db`
@@ -196,6 +205,8 @@ GRANT ALL PRIVILEGES ON `hbnb_dev_db`.* TO 'hbnb_dev'@'localhost'
 guillaume@ubuntu:~/AirBnB_v2$ 
 ```
 
+---
+
 ## 4. MySQL setup test: [setup_mysql_test.sql](https://github.com/elyse502/AirBnB_clone_v2/blob/master/setup_mysql_test.sql)
 A script that prepares a MySQL server for the project:
 * A database `hbnb_test_db`
@@ -218,6 +229,8 @@ GRANT SELECT ON `performance_schema`.* TO 'hbnb_test'@'localhost'
 GRANT ALL PRIVILEGES ON `hbnb_test_db`.* TO 'hbnb_test'@'localhost'
 guillaume@ubuntu:~/AirBnB_v2$ 
 ```
+
+---
 
 ## 5. Delete object: [models/engine/file_storage.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/engine/file_storage.py)
 Update `FileStorage`: (`models/engine/file_storage.py`)
@@ -287,6 +300,8 @@ All States: 1
 [State] (37705d25-8903-4318-9303-6d6d336a22c1) {'name': 'Nevada', 'created_at': datetime.datetime(2017, 11, 10, 1, 13, 34, 619133), 'id': '37705d25-8903-4318-9303-6d6d336a22c1'}
 guillaume@ubuntu:~/AirBnB_v2$ 
 ```
+
+---
 
 ## 6. DBStorage - States and Cities: [models/base_model.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/base_model.py), [models/city.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/city.py), [models/state.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/state.py), [models/engine/db_storage.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/engine/db_storage.py), [models/__init__.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/__init__.py)
 SQLAlchemy will be your best friend!
@@ -439,6 +454,8 @@ updated_at: 2017-11-10 00:53:19
 guillaume@ubuntu:~/AirBnB_v2$ 
 ```
 
+---
+
 ## 7. DBStorage - User: [models/user.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/user.py)
 Update `User`: (`models/user.py`)
 * `User` inherits from `BaseModel` and `Base` (respect the order)
@@ -478,6 +495,8 @@ first_name: Guillaume
  last_name: Snow
 guillaume@ubuntu:~/AirBnB_v2$
 ```
+
+---
 
 ## 8. DBStorage - Place: [models/place.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/place.py), [models/user.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/user.py), [models/city.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/city.py)
 Update `Place`: (`models/place.py`)
@@ -557,6 +576,8 @@ number_bathrooms: 1
 guillaume@ubuntu:~/AirBnB_v2$
 ```
 
+---
+
 ## 9. DBStorage - Review: [models/review.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/review.py), [models/user.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/user.py), [models/place.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/place.py)
 Update `Review`: (`models/review.py`)
 * `Review` inherits from `BaseModel` and `Base` (respect the order)
@@ -607,6 +628,8 @@ updated_at: 2017-11-10 04:06:25
    user_id: d93638d9-8233-4124-8f4e-17786592908b
 guillaume@ubuntu:~/AirBnB_v2$ 
 ```
+---
+
 ## 10. DBStorage - Amenity... and BOOM!: [models/amenity.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/amenity.py), [models/place.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/place.py)
 Update `Amenity`: (`models/amenity.py`)
 * `Amenity` inherits from `BaseModel` and `Base` (respect the order)
@@ -761,6 +784,8 @@ amenity_id: b80aec52-d0c9-420a-8471-3254572954b6
 amenity_id: b80aec52-d0c9-420a-8471-3254572954b6
 guillaume@ubuntu:~/AirBnB_v2$
 ```
+
+<hr />
 
 
 
