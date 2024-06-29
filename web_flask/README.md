@@ -25,7 +25,11 @@ Screenshots:
 _For this project, we expect you to look at this concept:_
 * [AirBnB clone](https://intranet.alxswe.com/concepts/74)
 
-## 1. AirBnB clone
+<br />
+<details>
+    <summary>Click to show/hide Content</summary><br />
+
+# 1. AirBnB clone
 
 ![65f4a1dd9c51265f49d0](https://github.com/elyse502/AirBnB_clone/assets/125453474/acf08a8b-f4e4-47b6-b32e-25d73c434b32)
 
@@ -270,6 +274,8 @@ print(date_now.strftime("%A %d %B %Y at %H:%M:%S")) # Thursday 08 June 2017 at 2
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br><br>
 
+</details>
+
 # Resources🏗️
 ### Read or watch:
 * [What is a Web Framework?](https://intelegain-technologies.medium.com/what-are-web-frameworks-and-why-you-need-them-c4e8806bd0fb)
@@ -370,6 +376,8 @@ cat 100-dump.sql | mysql -uroot -p
 this solved the error because now I was working with every table  ,from task 7 to  now I am in task 9
 ```
 
+<br /><hr /><br />
+
 # Tasks 📃
 ## 0. Hello Flask!: [0-hello_route.py](0-hello_route.py), [__init__.py](__init__.py)
 A script that starts a Flask web application:
@@ -389,6 +397,8 @@ Hello HBNB!$
 guillaume@ubuntu:~$
 ```
 
+---
+
 ## 1. HBNB: [1-hbnb_route.py](1-hbnb_route.py)
 A script that starts a Flask web application:
 * Your web application must be listening on `0.0.0.0`, port `5000`
@@ -407,6 +417,8 @@ guillaume@ubuntu:~$ curl 0.0.0.0:5000/hbnb ; echo "" | cat -e
 HBNB$
 guillaume@ubuntu:~$ 
 ```
+
+---
 
 ## 2. C is fun!: [2-c_route.py](2-c_route.py)
 A script that starts a Flask web application:
@@ -435,6 +447,8 @@ guillaume@ubuntu:~$ curl 0.0.0.0:5000/c
 guillaume@ubuntu:~$ 
 ```
 
+---
+
 ## 3. Python is cool!: [3-python_route.py](3-python_route.py)
 A script that starts a Flask web application:
 * Your web application must be listening on `0.0.0.0`, port `5000`
@@ -460,6 +474,8 @@ guillaume@ubuntu:~$ curl -Ls 0.0.0.0:5000/python/ ; echo "" | cat -e
 Python is cool$
 guillaume@ubuntu:~$ 
 ```
+
+---
 
 ## 4. Is it a number?: [4-number_route.py](4-number_route.py)
 A script that starts a Flask web application:
@@ -493,6 +509,8 @@ guillaume@ubuntu:~$ curl 0.0.0.0:5000/number/python
 <p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
 guillaume@ubuntu:~$ 
 ```
+
+---
 
 ## 5. Number template: [5-number_template.py](5-number_template.py), [templates/5-number.html](templates/5-number.html)
 A script that starts a Flask web application:
@@ -536,6 +554,8 @@ guillaume@ubuntu:~$ curl 0.0.0.0:5000/number_template/python
 <p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
 guillaume@ubuntu:~$ 
 ```
+
+---
 
 ## 6. Odd or even?: [6-number_odd_or_even.py](6-number_odd_or_even.py), [templates/6-number_odd_or_even.html](templates/6-number_odd_or_even.html)
 A script that starts a Flask web application:
@@ -587,6 +607,8 @@ guillaume@ubuntu:~$ curl 0.0.0.0:5000/number_odd_or_even/python
 guillaume@ubuntu:~$ 
 ```
 
+---
+
 ## 7. Improve engines: [models/engine/file_storage.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/engine/file_storage.py), [models/engine/db_storage.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/engine/db_storage.py), [models/state.py](https://github.com/elyse502/AirBnB_clone_v2/blob/master/models/state.py)
 Before using Flask to display our HBNB data, you will need to update some part of our engine:
 
@@ -626,7 +648,9 @@ And let’s go back the Python console:
 6
 >>> # perfect!
 ```
+
 And for the getter `cities` in the `State` model:
+
 ```groovy
 guillaume@ubuntu:~/AirBnB_v2$ cat main.py
 #!/usr/bin/python3
@@ -680,6 +704,8 @@ Find the city [City] (12a58d70-e255-4c1e-8a68-7d5fb924d2d2) {'name': 'Sonoma', '
 Find the city [City] (a693bdb9-e0ca-4521-adfd-e1a93c093b4b) {'name': 'Page', 'id': 'a693bdb9-e0ca-4521-adfd-e1a93c093b4b', 'state_id': 'a5e5311a-3c19-4995-9485-32c74411b416', 'updated_at': datetime.datetime(2017, 12, 11, 19, 27, 52, 512073), 'created_at': datetime.datetime(2017, 12, 11, 19, 27, 52, 511869)} in the state [State] (a5e5311a-3c19-4995-9485-32c74411b416) {'name': 'Arizona', 'id': 'a5e5311a-3c19-4995-9485-32c74411b416', 'updated_at': datetime.datetime(2017, 12, 11, 19, 27, 52, 510373), 'created_at': datetime.datetime(2017, 12, 11, 19, 27, 52, 510252)}
 guillaume@ubuntu:~/AirBnB_v2$ 
 ```
+
+---
 
 ## 8. List of states: [7-states_list.py](7-states_list.py), [templates/7-states_list.html](templates/7-states_list.html)
 A script that starts a Flask web application:
@@ -750,6 +776,8 @@ guillaume@ubuntu:~$ curl 0.0.0.0:5000/states_list ; echo ""
 </HTML>
 guillaume@ubuntu:~$ 
 ```
+
+---
 
 ## 9. Cities by states: [8-cities_by_states.py](8-cities_by_states.py), [templates/8-cities_by_states.html](templates/8-cities_by_states.html)
 A script that starts a Flask web application:
@@ -943,6 +971,7 @@ guillaume@ubuntu:~$
 
 ![9a7ae8155274b17881442200437e8793cf08de48](https://github.com/elyse502/AirBnB_clone_v2/assets/125453474/f141c881-8efe-4b6f-965d-e0fc27f79ce1)
 
+---
 
 ## 10. States and State: [9-states.py](9-states.py), [templates/9-states.html](templates/9-states.html)
 A script that starts a Flask web application:
@@ -1063,7 +1092,9 @@ guillaume@ubuntu:~$ curl 0.0.0.0:5000/states/holberton ; echo ""
 guillaume@ubuntu:~$
 ```
 
-   ## 11. HBNB filters: [10-hbnb_filters.py](10-hbnb_filters.py), [templates/10-hbnb_filters.html](templates/10-hbnb_filters.html), [static/](static/)
+---
+
+## 11. HBNB filters: [10-hbnb_filters.py](10-hbnb_filters.py), [templates/10-hbnb_filters.html](templates/10-hbnb_filters.html), [static/](static/)
 A script that starts a Flask web application:
 * Your web application must be listening on `0.0.0.0`, port `5000`
 * You must use storage for fetching data from the storage engine (`FileStorage` or `DBStorage`) => `from models import storage` and `storage.all(...)`
@@ -1101,6 +1132,7 @@ In the browser:
 ![94b3a416ba1551c59701eb6672ac0a36fbebba14](https://github.com/elyse502/AirBnB_clone_v2/assets/125453474/22b93c18-24b5-4263-8817-83bbee2e12d8)
 ![1e559707dd34a37564dc10e54b707815a516d363](https://github.com/elyse502/AirBnB_clone_v2/assets/125453474/ae47bcbf-ff74-4311-acc3-377e5a98a4df)
 
+---
 
 ## 12. HBNB is alive!: [100-hbnb.py](100-hbnb.py), [templates/100-hbnb.html](templates/100-hbnb.html), [static/](static/)
 A script that starts a Flask web application:
@@ -1144,12 +1176,7 @@ In the browser:
 ![016911388aa92532e06c4d5361188a2622425517](https://github.com/elyse502/AirBnB_clone_v2/assets/125453474/4d18c76b-dd31-4645-8e9d-4dcce91e13fa)
 
 
-
-
-
-
-
-
+<hr />
 
 
 
